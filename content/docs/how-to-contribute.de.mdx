@@ -1,0 +1,152 @@
+---
+title: "Wie man beiträgt"
+description: "Lerne, wie du zur Dokumentation beitragen kannst"
+---
+
+# Wie man beiträgt
+
+Wir freuen uns über Beiträge zu unserer Dokumentation! Diese Anleitung erklärt, wie du helfen kannst, unsere Docs für alle Produkte und Features zu verbessern.
+
+## Schnellstart
+
+Der einfachste Weg, beizutragen, ist direkt von der Dokumentationsseite:
+
+1. Klicke auf den Link **"Diese Seite auf GitHub bearbeiten"** am Ende jeder Doc-Seite
+2. GitHub erstellt automatisch einen Fork des Repositories
+3. Mache deine Änderungen im Web-Editor
+4. Erstelle einen Pull Request
+
+<Callout type="info">
+  Du musst kein Entwickler sein, um beizutragen! Tippfehler korrigieren, Klarheit verbessern oder Beispiele hinzufügen sind alles wertvolle Beiträge.
+</Callout>
+
+## Was kannst du beitragen?
+
+- **Tippfehler und Grammatik korrigieren** - Jede Verbesserung hilft
+- **Unklare Abschnitte klären** - Wenn dir etwas unklar ist, ist es wahrscheinlich auch anderen unklar
+- **Beispiele hinzufügen** - Code-Beispiele, Anwendungsfälle oder reale Szenarien
+- **Inhalte übersetzen** - Helfe, Docs in mehr Sprachen verfügbar zu machen
+- **Neue Themen hinzufügen** - Fehlende Dokumentation? Füge sie hinzu!
+- **Anstehende Features dokumentieren** - Helfe, Produkte zu dokumentieren, die "coming soon" sind
+
+## Beitrags-Workflow
+
+### Schritt 1: Repository forken
+
+Falls noch nicht geschehen, forke das [Docs-Repository](https://github.com/flomks/weareo.fun) auf GitHub.
+
+### Schritt 2: Branch erstellen
+
+Erstelle einen neuen Branch für deine Änderungen:
+
+```bash
+git checkout -b typo-in-authentication-korrigieren
+```
+
+### Schritt 3: Änderungen vornehmen
+
+Bearbeite die MDX-Dateien im entsprechenden Produktordner (z.B. `content/docs/ollm/` für OLLM-Docs). Du kannst verwenden:
+
+- **Markdown** für Textformatierung
+- **MDX-Komponenten** wie `<Callout>`, `<CodeBlock>` und `<ApiExample>`
+- **Frontmatter** für Metadaten (Titel, Beschreibung)
+
+<CodeBlock language="mdx">
+{`---
+title: "Dein Seitentitel"
+description: "Eine kurze Beschreibung"
+---
+
+# Dein Inhalt
+
+<Callout type="warning">
+  Wichtige Information hier!
+</Callout>`}
+</CodeBlock>
+
+### Schritt 4: Committen und Pushen
+
+```bash
+git add .
+git commit -m "Tippfehler im Authentication-Guide korrigiert"
+git push origin typo-in-authentication-korrigieren
+```
+
+### Schritt 5: Pull Request öffnen
+
+1. Gehe zu deinem Fork auf GitHub
+2. Klicke auf "New Pull Request"
+3. Beschreibe deine Änderungen
+4. Sende den PR ab
+
+## Dokumentations-Struktur
+
+Unsere Dokumentation ist nach Produkten organisiert:
+
+```
+content/docs/
+  ├─ ollm/              # OLLM-Dokumentation
+  ├─ [produkt-name]/    # Andere Produkt-Docs
+  └─ how-to-contribute.mdx  # Diese Datei
+```
+
+Wenn du zu einem bestimmten Produkt beiträgst, platziere deine Dateien im entsprechenden Ordner. Für neue Produkte oder "coming soon" Features, erstelle einen neuen Ordner mit der gleichen Struktur.
+
+## MDX-Richtlinien
+
+### Verfügbare Komponenten
+
+- `<Callout type="info|warning|error">` - Wichtige Informationen hervorheben
+- `<CodeBlock language="typescript">` - Syntax-hervorgehobene Code-Blöcke
+- `<ApiExample method="POST" endpoint="/v1/auth" />` - API-Endpoint-Beispiele
+
+### Schreibstil
+
+- Sei klar und präzise
+- Verwende Beispiele, wenn möglich
+- Verlinke zu verwandter Dokumentation
+- Halte Absätze kurz
+- Verwende konsistente Terminologie
+
+### Frontmatter
+
+Jede MDX-Datei sollte mit Frontmatter beginnen:
+
+```yaml
+---
+title: "Seitentitel"
+description: "Kurze Beschreibung für Suche und Vorschauen"
+---
+```
+
+## Beitragen zu "Coming Soon" Produkten
+
+Wenn du Dokumentation für Produkte beiträgst, die noch in Entwicklung sind:
+
+- Verwende die `<Callout type="warning">` Komponente, um Beta/Früher-Zugang-Status anzuzeigen
+- Markiere experimentelle Features klar
+- Füge Versionsinformationen hinzu, wenn relevant
+- Verlinke zu verwandter stabiler Dokumentation
+
+<Callout type="warning">
+  Dieses Feature befindet sich derzeit in Entwicklung. Die Dokumentation kann sich ändern, während das Feature weiterentwickelt wird.
+</Callout>
+
+## Lokalisierung
+
+Wenn du Übersetzungen beiträgst:
+
+- Erstelle eine Datei mit Sprachsuffix: `filename.de.mdx` oder `filename.es.mdx`
+- Behalte die gleiche Struktur und das Frontmatter bei
+- Übersetze den Inhalt, während du die technische Genauigkeit beibehältst
+- Platziere übersetzte Dateien im gleichen Ordner wie das Original
+
+## Fragen?
+
+- Sieh dir den [Contributing Guide](https://github.com/flomks/weareo.fun/blob/main/CONTRIBUTING.md) im Repository an
+- Öffne ein Issue auf GitHub, wenn du Fragen hast
+- Nimm an unseren Community-Diskussionen teil
+
+<Callout type="info">
+  Danke für deinen Beitrag! Jeder Beitrag, egal wie klein, hilft, unsere Dokumentation für alle besser zu machen.
+</Callout>

@@ -1,0 +1,152 @@
+---
+title: "Cómo Contribuir"
+description: "Aprende cómo contribuir a la documentación"
+---
+
+# Cómo Contribuir
+
+¡Agradecemos las contribuciones a nuestra documentación! Esta guía explica cómo puedes ayudar a mejorar nuestros documentos para todos los productos y características.
+
+## Inicio Rápido
+
+La forma más fácil de contribuir es directamente desde la página de documentación:
+
+1. Haz clic en el enlace **"Editar esta página en GitHub"** al final de cualquier página de documentación
+2. GitHub creará automáticamente un fork del repositorio
+3. Realiza tus cambios en el editor web
+4. Envía un Pull Request
+
+<Callout type="info">
+  ¡No necesitas ser desarrollador para contribuir! Corregir errores tipográficos, mejorar la claridad o agregar ejemplos son todas contribuciones valiosas.
+</Callout>
+
+## ¿Qué Puedes Contribuir?
+
+- **Corregir errores tipográficos y gramática** - Cada mejora ayuda
+- **Aclarar secciones confusas** - Si algo no está claro para ti, probablemente tampoco lo esté para otros
+- **Agregar ejemplos** - Ejemplos de código, casos de uso o escenarios del mundo real
+- **Traducir contenido** - Ayuda a hacer que los documentos estén disponibles en más idiomas
+- **Agregar nuevos temas** - ¿Falta documentación? ¡Agrégala!
+- **Documentar características próximas** - Ayuda a documentar productos que están "coming soon"
+
+## Flujo de Contribución
+
+### Paso 1: Hacer Fork del Repositorio
+
+Si aún no lo has hecho, haz fork del [repositorio de documentación](https://github.com/flomks/weareo.fun) en GitHub.
+
+### Paso 2: Crear una Rama
+
+Crea una nueva rama para tus cambios:
+
+```bash
+git checkout -b corregir-typo-en-autenticacion
+```
+
+### Paso 3: Realizar Cambios
+
+Edita los archivos MDX en la carpeta del producto correspondiente (por ejemplo, `content/docs/ollm/` para documentación de OLLM). Puedes usar:
+
+- **Markdown** para formatear texto
+- **Componentes MDX** como `<Callout>`, `<CodeBlock>` y `<ApiExample>`
+- **Frontmatter** para metadatos (título, descripción)
+
+<CodeBlock language="mdx">
+{`---
+title: "Tu Título de Página"
+description: "Una breve descripción"
+---
+
+# Tu Contenido
+
+<Callout type="warning">
+  ¡Información importante aquí!
+</Callout>`}
+</CodeBlock>
+
+### Paso 4: Hacer Commit y Push
+
+```bash
+git add .
+git commit -m "Corregir error tipográfico en guía de autenticación"
+git push origin corregir-typo-en-autenticacion
+```
+
+### Paso 5: Abrir un Pull Request
+
+1. Ve a tu fork en GitHub
+2. Haz clic en "New Pull Request"
+3. Describe tus cambios
+4. Envía el PR
+
+## Estructura de Documentación
+
+Nuestra documentación está organizada por producto:
+
+```
+content/docs/
+  ├─ ollm/              # Documentación de OLLM
+  ├─ [nombre-producto]/ # Documentación de otros productos
+  └─ how-to-contribute.mdx  # Este archivo
+```
+
+Cuando contribuyas a un producto específico, coloca tus archivos en la carpeta correspondiente. Para nuevos productos o características "coming soon", crea una nueva carpeta siguiendo la misma estructura.
+
+## Pautas MDX
+
+### Componentes Disponibles
+
+- `<Callout type="info|warning|error">` - Resaltar información importante
+- `<CodeBlock language="typescript">` - Bloques de código con resaltado de sintaxis
+- `<ApiExample method="POST" endpoint="/v1/auth" />` - Ejemplos de endpoints de API
+
+### Estilo de Escritura
+
+- Sé claro y conciso
+- Usa ejemplos cuando sea posible
+- Enlaza a documentación relacionada
+- Mantén los párrafos cortos
+- Usa terminología consistente
+
+### Frontmatter
+
+Cada archivo MDX debe comenzar con frontmatter:
+
+```yaml
+---
+title: "Título de Página"
+description: "Breve descripción para búsqueda y vistas previas"
+---
+```
+
+## Contribuir a Productos "Coming Soon"
+
+Si estás contribuyendo documentación para productos que aún están en desarrollo:
+
+- Usa el componente `<Callout type="warning">` para indicar el estado beta/acceso temprano
+- Marca claramente las características experimentales
+- Incluye información de versión cuando sea relevante
+- Enlaza a documentación estable relacionada
+
+<Callout type="warning">
+  Esta característica está actualmente en desarrollo. La documentación puede cambiar a medida que la característica evoluciona.
+</Callout>
+
+## Localización
+
+Si estás contribuyendo traducciones:
+
+- Crea un archivo con el sufijo del idioma: `filename.de.mdx` o `filename.es.mdx`
+- Mantén la misma estructura y frontmatter
+- Traduce el contenido manteniendo la precisión técnica
+- Coloca los archivos traducidos en la misma carpeta que el original
+
+## ¿Preguntas?
+
+- Consulta la [Guía de Contribución](https://github.com/flomks/weareo.fun/blob/main/CONTRIBUTING.md) en el repositorio
+- Abre un issue en GitHub si tienes preguntas
+- Únete a nuestras discusiones de la comunidad
+
+<Callout type="info">
+  ¡Gracias por contribuir! Cada contribución, sin importar cuán pequeña, ayuda a hacer que nuestra documentación sea mejor para todos.
+</Callout>

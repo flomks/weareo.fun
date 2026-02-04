@@ -1,0 +1,152 @@
+---
+title: "How to Contribute"
+description: "Learn how to contribute to the documentation"
+---
+
+# How to Contribute
+
+We welcome contributions to our documentation! This guide explains how you can help improve our docs for all products and features.
+
+## Quick Start
+
+The easiest way to contribute is directly from the documentation page:
+
+1. Click the **"Edit this page on GitHub"** link at the bottom of any doc page
+2. GitHub will automatically fork the repository for you
+3. Make your changes in the web editor
+4. Submit a Pull Request
+
+<Callout type="info">
+  You don't need to be a developer to contribute! Fixing typos, improving clarity, or adding examples are all valuable contributions.
+</Callout>
+
+## What Can You Contribute?
+
+- **Fix typos and grammar** - Every improvement helps
+- **Clarify confusing sections** - If something is unclear to you, it's probably unclear to others too
+- **Add examples** - Code samples, use cases, or real-world scenarios
+- **Translate content** - Help make docs available in more languages
+- **Add new topics** - Missing documentation? Add it!
+- **Document upcoming features** - Help document products that are "coming soon"
+
+## Contribution Workflow
+
+### Step 1: Fork the Repository
+
+If you haven't already, fork the [docs repository](https://github.com/flomks/weareo.fun) on GitHub.
+
+### Step 2: Create a Branch
+
+Create a new branch for your changes:
+
+```bash
+git checkout -b fix-typo-in-authentication
+```
+
+### Step 3: Make Your Changes
+
+Edit the MDX files in the appropriate product folder (e.g., `content/docs/ollm/` for OLLM docs). You can use:
+
+- **Markdown** for text formatting
+- **MDX Components** like `<Callout>`, `<CodeBlock>`, and `<ApiExample>`
+- **Frontmatter** for metadata (title, description)
+
+<CodeBlock language="mdx">
+{`---
+title: "Your Page Title"
+description: "A brief description"
+---
+
+# Your Content
+
+<Callout type="warning">
+  Important information here!
+</Callout>`}
+</CodeBlock>
+
+### Step 4: Commit and Push
+
+```bash
+git add .
+git commit -m "Fix typo in authentication guide"
+git push origin fix-typo-in-authentication
+```
+
+### Step 5: Open a Pull Request
+
+1. Go to your fork on GitHub
+2. Click "New Pull Request"
+3. Describe your changes
+4. Submit the PR
+
+## Documentation Structure
+
+Our documentation is organized by product:
+
+```
+content/docs/
+  ├─ ollm/              # OLLM documentation
+  ├─ [product-name]/    # Other product docs
+  └─ how-to-contribute.mdx  # This file
+```
+
+When contributing to a specific product, place your files in the corresponding folder. For new products or "coming soon" features, create a new folder following the same structure.
+
+## MDX Guidelines
+
+### Available Components
+
+- `<Callout type="info|warning|error">` - Highlight important information
+- `<CodeBlock language="typescript">` - Syntax-highlighted code blocks
+- `<ApiExample method="POST" endpoint="/v1/auth" />` - API endpoint examples
+
+### Writing Style
+
+- Be clear and concise
+- Use examples when possible
+- Link to related documentation
+- Keep paragraphs short
+- Use consistent terminology
+
+### Frontmatter
+
+Every MDX file should start with frontmatter:
+
+```yaml
+---
+title: "Page Title"
+description: "Brief description for search and previews"
+---
+```
+
+## Contributing to "Coming Soon" Products
+
+If you're contributing documentation for products that are still in development:
+
+- Use the `<Callout type="warning">` component to indicate beta/early access status
+- Clearly mark experimental features
+- Include version information when relevant
+- Link to related stable documentation
+
+<Callout type="warning">
+  This feature is currently in development. Documentation may change as the feature evolves.
+</Callout>
+
+## Localization
+
+If you're contributing translations:
+
+- Create a file with the language suffix: `filename.de.mdx` or `filename.es.mdx`
+- Keep the same structure and frontmatter
+- Translate the content while maintaining technical accuracy
+- Place translated files in the same folder as the original
+
+## Questions?
+
+- Check the [Contributing Guide](https://github.com/flomks/weareo.fun/blob/main/CONTRIBUTING.md) in the repository
+- Open an issue on GitHub if you have questions
+- Join our community discussions
+
+<Callout type="info">
+  Thank you for contributing! Every contribution, no matter how small, helps make our documentation better for everyone.
+</Callout>
