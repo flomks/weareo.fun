@@ -51,8 +51,8 @@ Edit the MDX files in the appropriate product folder (e.g., `content/docs/ollm/`
 - **MDX Components** like `<Callout>`, `<CodeBlock>`, and `<ApiExample>`
 - **Frontmatter** for metadata (title, description)
 
-<CodeBlock language="mdx">
-{`---
+````mdx
+---
 title: "Your Page Title"
 description: "A brief description"
 ---
@@ -61,8 +61,8 @@ description: "A brief description"
 
 <Callout type="warning">
   Important information here!
-</Callout>`}
-</CodeBlock>
+</Callout>
+````
 
 ### Step 4: Commit and Push
 
@@ -122,8 +122,17 @@ Highlight important information, warnings, or errors.
 - `children`: The content to display
 
 **Example:**
+
 <Callout type="info">
-  This is an example of an info callout. Use it to provide helpful tips or additional context.
+  This is an **info** callout. Use it to provide helpful tips or additional context.
+</Callout>
+
+<Callout type="warning">
+  This is a **warning** callout. Use it to highlight important cautions or potential issues.
+</Callout>
+
+<Callout type="error">
+  This is an **error** callout. Use it to indicate critical errors or problems that need attention.
 </Callout>
 
 #### CodeBlock
@@ -167,7 +176,10 @@ Display simple code snippets without syntax highlighting (useful for commands or
 - `language` (optional): Language identifier (default: `"bash"`)
 
 **Example:**
+
 <Snippet text="pnpm add @ofoundation/ollm" dark />
+
+<Snippet text="npm install @ofoundation/ollm" />
 
 **Note:** The Snippet component also includes a copy button that appears on hover.
 
@@ -186,6 +198,7 @@ Display API endpoint examples with method badges.
 - `endpoint` (required): API endpoint path
 
 **Example:**
+
 <ApiExample method="GET" endpoint="/api/v1/models" />
 <ApiExample method="POST" endpoint="/api/v1/chat/completions" />
 
@@ -205,21 +218,26 @@ Display images with Next.js optimization.
 - `height` (optional): Image height (default: `600`)
 
 **Example:**
-```mdx
-<Image 
-  src="/docs/ollm/images/architecture.png" 
-  alt="System architecture diagram" 
-/>
-```
 
-**Note:** For external images, use full URLs. For local images, place them in the `content/docs/ollm/images/` directory in the docs repository.
+<Callout type="info">
+  **Note:** Image examples require actual image files. In your documentation, use:
+  
+  ```mdx
+  <Image 
+    src="/docs/ollm/images/architecture.png" 
+    alt="System architecture diagram" 
+  />
+  ```
+  
+  For external images, use full URLs. For local images, place them in the `content/docs/ollm/images/` directory in the docs repository.
+</Callout>
 
 #### Tabs
 
 Create tabbed content sections (useful for showing different installation methods, code examples, etc.).
 
 **Syntax:**
-```mdx
+````mdx
 <Tabs items={['Tab 1', 'Tab 2', 'Tab 3']}>
   <Tab>
     Content for Tab 1
@@ -231,7 +249,7 @@ Create tabbed content sections (useful for showing different installation method
     Content for Tab 3
   </Tab>
 </Tabs>
-```
+````
 
 **Props:**
 - `items` (required): Array of tab labels
@@ -239,6 +257,7 @@ Create tabbed content sections (useful for showing different installation method
 - `children`: Tab components (must match the number of items)
 
 **Example:**
+
 <Tabs items={['Installation', 'Usage', 'Examples']}>
   <Tab>
     <Snippet text="npm install @ofoundation/ollm" dark />
@@ -272,6 +291,7 @@ Create expandable/collapsible content sections.
 - `children`: The content to display when expanded
 
 **Example:**
+
 <Accordion title="Advanced Configuration">
   This content is hidden by default and can be expanded by clicking the title.
 </Accordion>
@@ -293,7 +313,12 @@ Create styled buttons or links.
 - `children`: Button text
 
 **Example:**
-<Button href="https://ollm.com" variant="primary">Visit OLLM</Button>
+
+<Button variant="default">Default Button</Button>
+<Button variant="primary">Primary Button</Button>
+<Button variant="secondary">Secondary Button</Button>
+
+<Button href="https://ollm.com" variant="primary">Visit OLLM (Link)</Button>
 
 #### Table
 
@@ -320,6 +345,7 @@ Display data in a table format with overflow handling.
 **Note:** Use standard HTML table elements (`<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`) inside the `<Table>` component.
 
 **Example:**
+
 <Table>
   <thead>
     <tr>
@@ -355,12 +381,19 @@ Embed videos with responsive aspect ratio.
 - `height` (optional): Video height (default: `315`)
 
 **Example:**
-```mdx
-<Video 
-  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-  title="Tutorial Video" 
-/>
-```
+
+<Callout type="info">
+  **Note:** Video examples require actual video embed URLs. In your documentation, use:
+  
+  ```mdx
+  <Video 
+    src="https://www.youtube.com/embed/VIDEO_ID" 
+    title="Tutorial Video" 
+  />
+  ```
+  
+  The Video component creates a responsive iframe with a 16:9 aspect ratio.
+</Callout>
 
 #### Steps
 
@@ -380,6 +413,7 @@ Create step-by-step guides with numbered steps.
 - `Step`: Individual step component (no props, just children)
 
 **Example:**
+
 <Steps>
   <Step>Fork the repository on GitHub</Step>
   <Step>Create a new branch for your changes</Step>
@@ -401,7 +435,8 @@ Display small tags or labels.
 - `children`: Badge text
 
 **Example:**
-<Badge variant="success">Available</Badge> <Badge variant="warning">Beta</Badge> <Badge variant="error">Deprecated</Badge>
+
+<Badge variant="default">Default</Badge> <Badge variant="success">Available</Badge> <Badge variant="warning">Beta</Badge> <Badge variant="error">Deprecated</Badge> <Badge variant="info">New</Badge>
 
 #### Card
 
@@ -419,8 +454,13 @@ Display content in a card container.
 - `children`: Card content
 
 **Example:**
-<Card title="Quick Reference">
-  This is a card with a title and content.
+
+<Card title="Card with Title">
+  This is a card with a title and content. You can include any content here, including other components.
+</Card>
+
+<Card>
+  This is a card without a title. It still provides a nice container for your content.
 </Card>
 
 #### Alert
@@ -437,8 +477,11 @@ Display alert messages (similar to Callout but with different styling).
 - `children`: Alert content
 
 **Example:**
+
+<Alert type="info">This is an informational alert.</Alert>
 <Alert type="success">Your changes have been saved!</Alert>
 <Alert type="warning">This feature is experimental.</Alert>
+<Alert type="error">An error occurred while processing your request.</Alert>
 
 ### Standard Markdown Elements
 
@@ -532,7 +575,7 @@ Standard Markdown images:
 
 You can combine components for richer content:
 
-```mdx
+````mdx
 <Card title="Installation Guide">
   <Tabs items={['npm', 'yarn', 'pnpm']}>
     <Tab>
@@ -550,7 +593,7 @@ You can combine components for richer content:
     After installation, restart your development server.
   </Callout>
 </Card>
-```
+````
 
 ### Writing Style
 
