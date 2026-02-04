@@ -1,0 +1,44 @@
+---
+title: "Authentication"
+description: "How to authenticate requests to the OLLM API"
+---
+
+# Authentication
+
+To call the OLLM API you need an API key.
+
+<Callout type="warning">
+  Keep your API key secret. Do not expose it in frontend code.
+</Callout>
+
+## Headers
+
+Send the key via `Authorization`:
+
+<CodeBlock language="bash">
+{`curl -X POST https://api.ollm.com/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"prompt":"Hello"}'`}
+</CodeBlock>
+
+## Example Request
+
+<ApiExample method="POST" endpoint="/v1/chat/completions" />
+
+<CodeBlock language="typescript">
+{`const res = await fetch("https://api.ollm.com/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    Authorization: "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ prompt: "Hello" }),
+});`}
+</CodeBlock>
+
+## Errors
+
+<Callout type="error">
+  If your key is invalid, you’ll receive a 401 Unauthorized response.
+</Callout>
