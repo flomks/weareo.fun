@@ -51,7 +51,7 @@ Edit the MDX files in the appropriate product folder (e.g., `content/docs/ollm/`
 - **MDX Components** like `<Callout>`, `<CodeBlock>`, and `<ApiExample>`
 - **Frontmatter** for metadata (title, description)
 
-````text
+````mdx
 ---
 title: "Your Page Title"
 description: "A brief description"
@@ -237,7 +237,7 @@ Display images with Next.js optimization.
 Create tabbed content sections (useful for showing different installation methods, code examples, etc.).
 
 **Syntax:**
-````text
+````mdx
 <Tabs items={['Tab 1', 'Tab 2', 'Tab 3']}>
   <Tab>
     Content for Tab 1
@@ -264,7 +264,7 @@ Create tabbed content sections (useful for showing different installation method
 
 Here's a complete example of how to use Tabs:
 
-````text
+````mdx
 <Tabs items={['Installation', 'Usage', 'Examples']}>
   <Tab>
     <Snippet text="npm install @ofoundation/ollm" dark />
@@ -287,7 +287,7 @@ const result = await ollm.chatModel('model-name');
 Create expandable/collapsible content sections.
 
 **Syntax:**
-```text
+```mdx
 <Accordion title="Click to expand">
   Hidden content that appears when expanded.
 </Accordion>
@@ -309,7 +309,7 @@ Create expandable/collapsible content sections.
 Create styled buttons or links.
 
 **Syntax:**
-```text
+```mdx
 <Button href="/docs/guide">Go to Guide</Button>
 <Button variant="primary">Click Me</Button>
 ```
@@ -333,7 +333,7 @@ Create styled buttons or links.
 Display data in a table format with overflow handling.
 
 **Syntax:**
-```text
+```mdx
 <Table>
   <thead>
     <tr>
@@ -378,7 +378,7 @@ Display data in a table format with overflow handling.
 Embed videos with responsive aspect ratio.
 
 **Syntax:**
-```text
+```mdx
 <Video src="https://www.youtube.com/embed/VIDEO_ID" title="Video Title" />
 ```
 
@@ -393,7 +393,7 @@ Embed videos with responsive aspect ratio.
 <Callout type="info">
   **Note:** Video examples require actual video embed URLs. In your documentation, use:
   
-  ```text
+  ```mdx
   <Video 
     src="https://www.youtube.com/embed/VIDEO_ID" 
     title="Tutorial Video" 
@@ -408,7 +408,7 @@ Embed videos with responsive aspect ratio.
 Create step-by-step guides with numbered steps.
 
 **Syntax:**
-```text
+```mdx
 <Steps>
   <Step>First step instructions</Step>
   <Step>Second step instructions</Step>
@@ -433,7 +433,7 @@ Create step-by-step guides with numbered steps.
 Display small tags or labels.
 
 **Syntax:**
-```text
+```mdx
 <Badge variant="success">Available</Badge>
 <Badge variant="warning">Beta</Badge>
 ```
@@ -451,7 +451,7 @@ Display small tags or labels.
 Display content in a card container.
 
 **Syntax:**
-```text
+```mdx
 <Card title="Card Title">
   Card content goes here.
 </Card>
@@ -476,7 +476,7 @@ Display content in a card container.
 Display alert messages (similar to Callout but with different styling).
 
 **Syntax:**
-```text
+```mdx
 <Alert type="success">Operation completed successfully!</Alert>
 ```
 
@@ -545,7 +545,7 @@ Content after divider
 
 Standard Markdown code blocks (with syntax highlighting):
 
-````text
+````markdown
 ```typescript
 const example = "Code here";
 ```
@@ -583,7 +583,7 @@ Standard Markdown images:
 
 You can combine components for richer content:
 
-````text
+````mdx
 <Card title="Installation Guide">
   <Tabs items={['npm', 'yarn', 'pnpm']}>
     <Tab>
