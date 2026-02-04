@@ -1,0 +1,16 @@
+name: Notify main repo
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger main repo deployment
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.MAIN_REPO_TOKEN }}
+          repository: GITHUB_USERNAME/community-hub
+          event-type: docs-updated
