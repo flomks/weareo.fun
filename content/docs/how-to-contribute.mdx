@@ -51,7 +51,7 @@ Edit the MDX files in the appropriate product folder (e.g., `content/docs/ollm/`
 - **MDX Components** like `<Callout>`, `<CodeBlock>`, and `<ApiExample>`
 - **Frontmatter** for metadata (title, description)
 
-````mdx
+```mdx
 ---
 title: "Your Page Title"
 description: "A brief description"
@@ -62,7 +62,7 @@ description: "A brief description"
 <Callout type="warning">
   Important information here!
 </Callout>
-````
+```
 
 ### Step 4: Commit and Push
 
@@ -237,7 +237,7 @@ Display images with Next.js optimization.
 Create tabbed content sections (useful for showing different installation methods, code examples, etc.).
 
 **Syntax:**
-````mdx
+```mdx
 <Tabs items={['Tab 1', 'Tab 2', 'Tab 3']}>
   <Tab>
     Content for Tab 1
@@ -249,7 +249,7 @@ Create tabbed content sections (useful for showing different installation method
     Content for Tab 3
   </Tab>
 </Tabs>
-````
+```
 
 **Props:**
 - `items` (required): Array of tab labels
@@ -264,7 +264,7 @@ Create tabbed content sections (useful for showing different installation method
 
 Here's a complete example of how to use Tabs:
 
-````mdx
+```mdx
 <Tabs items={['Installation', 'Usage', 'Examples']}>
   <Tab>
     <Snippet text="npm install @ofoundation/ollm" dark />
@@ -280,7 +280,7 @@ const result = await ollm.chatModel('model-name');
     </CodeBlock>
   </Tab>
 </Tabs>
-````
+```
 
 #### Accordion
 
@@ -545,11 +545,13 @@ Content after divider
 
 Standard Markdown code blocks (with syntax highlighting):
 
-````markdown
+Use three backticks followed by the language name:
+
+<CodeBlock language="text">
 ```typescript
 const example = "Code here";
 ```
-````
+</CodeBlock>
 
 **Note:** All code blocks (both `<CodeBlock>` component and standard Markdown) include a copy button that appears on hover.
 
@@ -583,7 +585,7 @@ Standard Markdown images:
 
 You can combine components for richer content:
 
-````mdx
+```mdx
 <Card title="Installation Guide">
   <Tabs items={['npm', 'yarn', 'pnpm']}>
     <Tab>
@@ -601,7 +603,7 @@ You can combine components for richer content:
     After installation, restart your development server.
   </Callout>
 </Card>
-````
+```
 
 ### Writing Style
 
