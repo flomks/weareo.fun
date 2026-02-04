@@ -103,7 +103,7 @@ Our documentation supports a wide range of MDX components to create rich, intera
 Highlight important information, warnings, or errors.
 
 **Syntax:**
-```text
+```mdx
 <Callout type="info">
   This is an informational message.
 </Callout>
@@ -140,15 +140,15 @@ Highlight important information, warnings, or errors.
 Display syntax-highlighted code blocks with copy functionality.
 
 **Syntax:**
-```text
+```mdx
 <CodeBlock language="typescript">
 const example = "Your code here";
 </CodeBlock>
 ```
 
 **Props:**
-- `language` (optional): Programming language for syntax highlighting (e.g., `"typescript"`, `"javascript"`, `"bash"`, `"python"`) (default: `"text"`)
-- `children`: The code to display (string)
+- `language` (optional): Programming language for syntax highlighting (e.g., `"typescript"`, `"javascript"`, `"bash"`, `"python"`, `"json"`, `"yaml"`) (default: `"text"`)
+- `children`: The code to display (must be a string)
 
 **Example:**
 <CodeBlock language="typescript">
@@ -166,14 +166,14 @@ const ollm = createOLLM({
 Display simple code snippets without syntax highlighting (useful for commands or short code examples).
 
 **Syntax:**
-```text
+```mdx
 <Snippet text="npm install @ofoundation/ollm" dark />
 ```
 
 **Props:**
 - `text` (required): The code text to display
 - `dark` (optional): Use dark background (default: `false`)
-- `language` (optional): Language identifier (default: `"bash"`)
+- `language` (optional): Language identifier (default: `"bash"`) - Note: This prop exists but Snippet doesn't use syntax highlighting
 
 **Example:**
 
@@ -188,7 +188,7 @@ Display simple code snippets without syntax highlighting (useful for commands or
 Display API endpoint examples with method badges.
 
 **Syntax:**
-```text
+```mdx
 <ApiExample method="GET" endpoint="/api/v1/users" />
 <ApiExample method="POST" endpoint="/api/v1/auth/login" />
 ```
@@ -204,32 +204,34 @@ Display API endpoint examples with method badges.
 
 #### Image
 
-Display images with Next.js optimization.
+Display images with automatic handling for local and external URLs.
 
 **Syntax:**
-```text
+```mdx
 <Image src="/docs/ollm/images/example.png" alt="Description" />
 ```
 
 **Props:**
-- `src` (required): Image path (local or external URL)
+- `src` (required): Image path (local path starting with `/` or external URL starting with `http`)
 - `alt` (optional): Alt text for accessibility
 - `width` (optional): Image width (default: `1200`)
 - `height` (optional): Image height (default: `600`)
+
+**Note:** You can also use standard Markdown image syntax: `![Alt text](/path/to/image.png)`
 
 **Example:**
 
 <Callout type="info">
   **Note:** Image examples require actual image files. In your documentation, use:
   
-  ```text
+  ```mdx
   <Image 
     src="/docs/ollm/images/architecture.png" 
     alt="System architecture diagram" 
   />
   ```
   
-  For external images, use full URLs. For local images, place them in the `content/docs/ollm/images/` directory in the docs repository.
+  For external images, use full URLs (e.g., `https://example.com/image.png`). For local images, place them in the `public/docs/` directory and reference them with paths starting with `/docs/`.
 </Callout>
 
 #### Tabs
@@ -400,7 +402,7 @@ Embed videos with responsive aspect ratio.
   />
   ```
   
-  The Video component creates a responsive iframe with a 16:9 aspect ratio.
+  The Video component creates a responsive iframe with a 16:9 aspect ratio. Make sure to use the embed URL format (e.g., `https://www.youtube.com/embed/VIDEO_ID` for YouTube).
 </Callout>
 
 #### Steps
@@ -473,7 +475,7 @@ Display content in a card container.
 
 #### Alert
 
-Display alert messages (similar to Callout but with different styling).
+Display alert messages with success support (similar to Callout but includes "success" type and uses slightly brighter text colors).
 
 **Syntax:**
 ```mdx
@@ -483,6 +485,10 @@ Display alert messages (similar to Callout but with different styling).
 **Props:**
 - `type` (optional): `"info"` | `"success"` | `"warning"` | `"error"` (default: `"info"`)
 - `children`: Alert content
+
+**When to use:**
+- Use `Callout` for general informational messages, warnings, and errors
+- Use `Alert` when you need to display success messages or want slightly brighter text colors
 
 **Example:**
 
@@ -508,7 +514,7 @@ Headings automatically have proper spacing (no automatic borders):
 #### Lists
 
 **Unordered Lists:**
-```text
+```markdown
 - Item 1
 - Item 2
   - Nested item (indent with 2 spaces or tab)
@@ -516,7 +522,7 @@ Headings automatically have proper spacing (no automatic borders):
 ```
 
 **Ordered Lists:**
-```text
+```markdown
 1. First item
 2. Second item
 3. Third item
@@ -524,7 +530,7 @@ Headings automatically have proper spacing (no automatic borders):
 
 **Nested Lists:**
 Use indentation (2 spaces or tab) to create nested lists:
-```text
+```markdown
 - Main item
   - Sub-item 1
   - Sub-item 2
@@ -535,7 +541,7 @@ Use indentation (2 spaces or tab) to create nested lists:
 
 Add manual dividers between sections:
 
-```text
+```markdown
 ---
 
 Content after divider
@@ -547,11 +553,9 @@ Standard Markdown code blocks (with syntax highlighting):
 
 Use three backticks followed by the language name:
 
-<CodeBlock language="text">
 ```typescript
 const example = "Code here";
 ```
-</CodeBlock>
 
 **Note:** All code blocks (both `<CodeBlock>` component and standard Markdown) include a copy button that appears on hover.
 
@@ -559,7 +563,7 @@ const example = "Code here";
 
 Standard Markdown links:
 
-```text
+```markdown
 [Link Text](https://example.com)
 ```
 
@@ -567,19 +571,20 @@ Standard Markdown links:
 
 Standard Markdown images:
 
-```text
+```markdown
 ![Alt Text](/path/to/image.png)
 ```
 
 ### Component Best Practices
 
-1. **Use Callout for important information** - Don't overuse, but highlight key points
-2. **Use CodeBlock for code examples** - Provides syntax highlighting and copy functionality
-3. **Use Snippet for commands** - Simple, one-line commands work best with Snippet
-4. **Use Tabs for alternatives** - Great for showing different installation methods or code examples
-5. **Use Accordion for optional details** - Keep main content visible, hide advanced details
-6. **Use Steps for tutorials** - Perfect for step-by-step guides
-7. **Use Badge for status indicators** - Quick visual indicators for availability, status, etc.
+1. **Use Callout for important information** - Don't overuse, but highlight key points (info, warning, error)
+2. **Use Alert for success messages** - When you need to show success feedback or want slightly brighter text colors
+3. **Use CodeBlock for code examples** - Provides syntax highlighting and copy functionality for multi-line code
+4. **Use Snippet for commands** - Simple, one-line commands work best with Snippet (no syntax highlighting)
+5. **Use Tabs for alternatives** - Great for showing different installation methods or code examples
+6. **Use Accordion for optional details** - Keep main content visible, hide advanced details
+7. **Use Steps for tutorials** - Perfect for step-by-step guides
+8. **Use Badge for status indicators** - Quick visual indicators for availability, status, etc.
 
 ### Component Combinations
 
