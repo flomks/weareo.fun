@@ -51,7 +51,7 @@ Edit the MDX files in the appropriate product folder (e.g., `content/docs/ollm/`
 - **MDX Components** like `<Callout>`, `<CodeBlock>`, and `<ApiExample>`
 - **Frontmatter** for metadata (title, description)
 
-````mdx
+````text
 ---
 title: "Your Page Title"
 description: "A brief description"
@@ -103,7 +103,7 @@ Our documentation supports a wide range of MDX components to create rich, intera
 Highlight important information, warnings, or errors.
 
 **Syntax:**
-```mdx
+```text
 <Callout type="info">
   This is an informational message.
 </Callout>
@@ -140,7 +140,7 @@ Highlight important information, warnings, or errors.
 Display syntax-highlighted code blocks with copy functionality.
 
 **Syntax:**
-```mdx
+```text
 <CodeBlock language="typescript">
 const example = "Your code here";
 </CodeBlock>
@@ -166,7 +166,7 @@ const ollm = createOLLM({
 Display simple code snippets without syntax highlighting (useful for commands or short code examples).
 
 **Syntax:**
-```mdx
+```text
 <Snippet text="npm install @ofoundation/ollm" dark />
 ```
 
@@ -188,7 +188,7 @@ Display simple code snippets without syntax highlighting (useful for commands or
 Display API endpoint examples with method badges.
 
 **Syntax:**
-```mdx
+```text
 <ApiExample method="GET" endpoint="/api/v1/users" />
 <ApiExample method="POST" endpoint="/api/v1/auth/login" />
 ```
@@ -207,7 +207,7 @@ Display API endpoint examples with method badges.
 Display images with Next.js optimization.
 
 **Syntax:**
-```mdx
+```text
 <Image src="/docs/ollm/images/example.png" alt="Description" />
 ```
 
@@ -222,7 +222,7 @@ Display images with Next.js optimization.
 <Callout type="info">
   **Note:** Image examples require actual image files. In your documentation, use:
   
-  ```mdx
+  ```text
   <Image 
     src="/docs/ollm/images/architecture.png" 
     alt="System architecture diagram" 
@@ -237,7 +237,7 @@ Display images with Next.js optimization.
 Create tabbed content sections (useful for showing different installation methods, code examples, etc.).
 
 **Syntax:**
-````mdx
+````text
 <Tabs items={['Tab 1', 'Tab 2', 'Tab 3']}>
   <Tab>
     Content for Tab 1
@@ -258,6 +258,13 @@ Create tabbed content sections (useful for showing different installation method
 
 **Example:**
 
+<Callout type="info">
+  **Note:** The Tabs component creates interactive tabbed sections. When rendered, users can click between tabs to switch content. The `items` prop must be a JavaScript array of strings.
+</Callout>
+
+Here's a complete example of how to use Tabs:
+
+````text
 <Tabs items={['Installation', 'Usage', 'Examples']}>
   <Tab>
     <Snippet text="npm install @ofoundation/ollm" dark />
@@ -273,13 +280,14 @@ const result = await ollm.chatModel('model-name');
     </CodeBlock>
   </Tab>
 </Tabs>
+````
 
 #### Accordion
 
 Create expandable/collapsible content sections.
 
 **Syntax:**
-```mdx
+```text
 <Accordion title="Click to expand">
   Hidden content that appears when expanded.
 </Accordion>
@@ -301,7 +309,7 @@ Create expandable/collapsible content sections.
 Create styled buttons or links.
 
 **Syntax:**
-```mdx
+```text
 <Button href="/docs/guide">Go to Guide</Button>
 <Button variant="primary">Click Me</Button>
 ```
@@ -325,7 +333,7 @@ Create styled buttons or links.
 Display data in a table format with overflow handling.
 
 **Syntax:**
-```mdx
+```text
 <Table>
   <thead>
     <tr>
@@ -370,7 +378,7 @@ Display data in a table format with overflow handling.
 Embed videos with responsive aspect ratio.
 
 **Syntax:**
-```mdx
+```text
 <Video src="https://www.youtube.com/embed/VIDEO_ID" title="Video Title" />
 ```
 
@@ -385,7 +393,7 @@ Embed videos with responsive aspect ratio.
 <Callout type="info">
   **Note:** Video examples require actual video embed URLs. In your documentation, use:
   
-  ```mdx
+  ```text
   <Video 
     src="https://www.youtube.com/embed/VIDEO_ID" 
     title="Tutorial Video" 
@@ -400,7 +408,7 @@ Embed videos with responsive aspect ratio.
 Create step-by-step guides with numbered steps.
 
 **Syntax:**
-```mdx
+```text
 <Steps>
   <Step>First step instructions</Step>
   <Step>Second step instructions</Step>
@@ -425,7 +433,7 @@ Create step-by-step guides with numbered steps.
 Display small tags or labels.
 
 **Syntax:**
-```mdx
+```text
 <Badge variant="success">Available</Badge>
 <Badge variant="warning">Beta</Badge>
 ```
@@ -443,7 +451,7 @@ Display small tags or labels.
 Display content in a card container.
 
 **Syntax:**
-```mdx
+```text
 <Card title="Card Title">
   Card content goes here.
 </Card>
@@ -468,7 +476,7 @@ Display content in a card container.
 Display alert messages (similar to Callout but with different styling).
 
 **Syntax:**
-```mdx
+```text
 <Alert type="success">Operation completed successfully!</Alert>
 ```
 
@@ -491,7 +499,7 @@ All standard Markdown elements are supported and styled:
 
 Headings automatically have proper spacing (no automatic borders):
 
-```mdx
+```text
 # Heading 1
 ## Heading 2
 ### Heading 3
@@ -500,7 +508,7 @@ Headings automatically have proper spacing (no automatic borders):
 #### Lists
 
 **Unordered Lists:**
-```mdx
+```text
 - Item 1
 - Item 2
   - Nested item (indent with 2 spaces or tab)
@@ -508,7 +516,7 @@ Headings automatically have proper spacing (no automatic borders):
 ```
 
 **Ordered Lists:**
-```mdx
+```text
 1. First item
 2. Second item
 3. Third item
@@ -516,7 +524,7 @@ Headings automatically have proper spacing (no automatic borders):
 
 **Nested Lists:**
 Use indentation (2 spaces or tab) to create nested lists:
-```mdx
+```text
 - Main item
   - Sub-item 1
   - Sub-item 2
@@ -527,7 +535,7 @@ Use indentation (2 spaces or tab) to create nested lists:
 
 Add manual dividers between sections:
 
-```mdx
+```text
 ---
 
 Content after divider
@@ -537,7 +545,7 @@ Content after divider
 
 Standard Markdown code blocks (with syntax highlighting):
 
-````mdx
+````text
 ```typescript
 const example = "Code here";
 ```
@@ -549,7 +557,7 @@ const example = "Code here";
 
 Standard Markdown links:
 
-```mdx
+```text
 [Link Text](https://example.com)
 ```
 
@@ -557,7 +565,7 @@ Standard Markdown links:
 
 Standard Markdown images:
 
-```mdx
+```text
 ![Alt Text](/path/to/image.png)
 ```
 
@@ -575,7 +583,7 @@ Standard Markdown images:
 
 You can combine components for richer content:
 
-````mdx
+````text
 <Card title="Installation Guide">
   <Tabs items={['npm', 'yarn', 'pnpm']}>
     <Tab>
