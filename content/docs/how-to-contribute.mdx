@@ -96,9 +96,461 @@ When contributing to a specific product, place your files in the corresponding f
 
 ### Available Components
 
-- `<Callout type="info|warning|error">` - Highlight important information
-- `<CodeBlock language="typescript">` - Syntax-highlighted code blocks
-- `<ApiExample method="POST" endpoint="/v1/auth" />` - API endpoint examples
+Our documentation supports a wide range of MDX components to create rich, interactive content. Below is a comprehensive guide to all available components.
+
+#### Callout
+
+Highlight important information, warnings, or errors.
+
+**Syntax:**
+```mdx
+<Callout type="info">
+  This is an informational message.
+</Callout>
+
+<Callout type="warning">
+  This is a warning message.
+</Callout>
+
+<Callout type="error">
+  This is an error message.
+</Callout>
+```
+
+**Props:**
+- `type` (optional): `"info"` | `"warning"` | `"error"` (default: `"info"`)
+- `children`: The content to display
+
+**Example:**
+<Callout type="info">
+  This is an example of an info callout. Use it to provide helpful tips or additional context.
+</Callout>
+
+#### CodeBlock
+
+Display syntax-highlighted code blocks with copy functionality.
+
+**Syntax:**
+```mdx
+<CodeBlock language="typescript">
+const example = "Your code here";
+</CodeBlock>
+```
+
+**Props:**
+- `language` (optional): Programming language for syntax highlighting (e.g., `"typescript"`, `"javascript"`, `"bash"`, `"python"`) (default: `"text"`)
+- `children`: The code to display (string)
+
+**Example:**
+<CodeBlock language="typescript">
+import { createOLLM } from '@ofoundation/ollm';
+
+const ollm = createOLLM({
+  apiKey: 'YOUR_OLLM_API_KEY',
+});
+</CodeBlock>
+
+**Note:** The CodeBlock component includes a copy button that appears on hover.
+
+#### Snippet
+
+Display simple code snippets without syntax highlighting (useful for commands or short code examples).
+
+**Syntax:**
+```mdx
+<Snippet text="npm install @ofoundation/ollm" dark />
+```
+
+**Props:**
+- `text` (required): The code text to display
+- `dark` (optional): Use dark background (default: `false`)
+- `language` (optional): Language identifier (default: `"bash"`)
+
+**Example:**
+<Snippet text="pnpm add @ofoundation/ollm" dark />
+
+**Note:** The Snippet component also includes a copy button that appears on hover.
+
+#### ApiExample
+
+Display API endpoint examples with method badges.
+
+**Syntax:**
+```mdx
+<ApiExample method="GET" endpoint="/api/v1/users" />
+<ApiExample method="POST" endpoint="/api/v1/auth/login" />
+```
+
+**Props:**
+- `method` (required): HTTP method (e.g., `"GET"`, `"POST"`, `"PUT"`, `"DELETE"`)
+- `endpoint` (required): API endpoint path
+
+**Example:**
+<ApiExample method="GET" endpoint="/api/v1/models" />
+<ApiExample method="POST" endpoint="/api/v1/chat/completions" />
+
+#### Image
+
+Display images with Next.js optimization.
+
+**Syntax:**
+```mdx
+<Image src="/docs/ollm/images/example.png" alt="Description" />
+```
+
+**Props:**
+- `src` (required): Image path (local or external URL)
+- `alt` (optional): Alt text for accessibility
+- `width` (optional): Image width (default: `1200`)
+- `height` (optional): Image height (default: `600`)
+
+**Example:**
+```mdx
+<Image 
+  src="/docs/ollm/images/architecture.png" 
+  alt="System architecture diagram" 
+/>
+```
+
+**Note:** For external images, use full URLs. For local images, place them in the `content/docs/ollm/images/` directory in the docs repository.
+
+#### Tabs
+
+Create tabbed content sections (useful for showing different installation methods, code examples, etc.).
+
+**Syntax:**
+```mdx
+<Tabs items={['Tab 1', 'Tab 2', 'Tab 3']}>
+  <Tab>
+    Content for Tab 1
+  </Tab>
+  <Tab>
+    Content for Tab 2
+  </Tab>
+  <Tab>
+    Content for Tab 3
+  </Tab>
+</Tabs>
+```
+
+**Props:**
+- `items` (required): Array of tab labels
+- `defaultTab` (optional): Index of the default active tab (default: `0`)
+- `children`: Tab components (must match the number of items)
+
+**Example:**
+<Tabs items={['Installation', 'Usage', 'Examples']}>
+  <Tab>
+    <Snippet text="npm install @ofoundation/ollm" dark />
+  </Tab>
+  <Tab>
+    <CodeBlock language="typescript">
+const ollm = createOLLM({ apiKey: 'YOUR_KEY' });
+    </CodeBlock>
+  </Tab>
+  <Tab>
+    <CodeBlock language="typescript">
+const result = await ollm.chatModel('model-name');
+    </CodeBlock>
+  </Tab>
+</Tabs>
+
+#### Accordion
+
+Create expandable/collapsible content sections.
+
+**Syntax:**
+```mdx
+<Accordion title="Click to expand">
+  Hidden content that appears when expanded.
+</Accordion>
+```
+
+**Props:**
+- `title` (required): The clickable title text
+- `defaultOpen` (optional): Whether the accordion is open by default (default: `false`)
+- `children`: The content to display when expanded
+
+**Example:**
+<Accordion title="Advanced Configuration">
+  This content is hidden by default and can be expanded by clicking the title.
+</Accordion>
+
+#### Button
+
+Create styled buttons or links.
+
+**Syntax:**
+```mdx
+<Button href="/docs/guide">Go to Guide</Button>
+<Button variant="primary">Click Me</Button>
+```
+
+**Props:**
+- `href` (optional): Link URL (if provided, renders as a link)
+- `onClick` (optional): Click handler (if provided, renders as a button)
+- `variant` (optional): `"default"` | `"primary"` | `"secondary"` (default: `"default"`)
+- `children`: Button text
+
+**Example:**
+<Button href="https://ollm.com" variant="primary">Visit OLLM</Button>
+
+#### Table
+
+Display data in a table format with overflow handling.
+
+**Syntax:**
+```mdx
+<Table>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+    </tr>
+  </tbody>
+</Table>
+```
+
+**Note:** Use standard HTML table elements (`<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`) inside the `<Table>` component.
+
+**Example:**
+<Table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Confidential Computing</td>
+      <td>Available</td>
+    </tr>
+    <tr>
+      <td>Zero Data Retention</td>
+      <td>Available</td>
+    </tr>
+  </tbody>
+</Table>
+
+#### Video
+
+Embed videos with responsive aspect ratio.
+
+**Syntax:**
+```mdx
+<Video src="https://www.youtube.com/embed/VIDEO_ID" title="Video Title" />
+```
+
+**Props:**
+- `src` (required): Video embed URL
+- `title` (optional): Video title for accessibility
+- `width` (optional): Video width (default: `560`)
+- `height` (optional): Video height (default: `315`)
+
+**Example:**
+```mdx
+<Video 
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+  title="Tutorial Video" 
+/>
+```
+
+#### Steps
+
+Create step-by-step guides with numbered steps.
+
+**Syntax:**
+```mdx
+<Steps>
+  <Step>First step instructions</Step>
+  <Step>Second step instructions</Step>
+  <Step>Third step instructions</Step>
+</Steps>
+```
+
+**Props:**
+- `Steps`: Container component (no props)
+- `Step`: Individual step component (no props, just children)
+
+**Example:**
+<Steps>
+  <Step>Fork the repository on GitHub</Step>
+  <Step>Create a new branch for your changes</Step>
+  <Step>Make your edits and submit a pull request</Step>
+</Steps>
+
+#### Badge
+
+Display small tags or labels.
+
+**Syntax:**
+```mdx
+<Badge variant="success">Available</Badge>
+<Badge variant="warning">Beta</Badge>
+```
+
+**Props:**
+- `variant` (optional): `"default"` | `"success"` | `"warning"` | `"error"` | `"info"` (default: `"default"`)
+- `children`: Badge text
+
+**Example:**
+<Badge variant="success">Available</Badge> <Badge variant="warning">Beta</Badge> <Badge variant="error">Deprecated</Badge>
+
+#### Card
+
+Display content in a card container.
+
+**Syntax:**
+```mdx
+<Card title="Card Title">
+  Card content goes here.
+</Card>
+```
+
+**Props:**
+- `title` (optional): Card title
+- `children`: Card content
+
+**Example:**
+<Card title="Quick Reference">
+  This is a card with a title and content.
+</Card>
+
+#### Alert
+
+Display alert messages (similar to Callout but with different styling).
+
+**Syntax:**
+```mdx
+<Alert type="success">Operation completed successfully!</Alert>
+```
+
+**Props:**
+- `type` (optional): `"info"` | `"success"` | `"warning"` | `"error"` (default: `"info"`)
+- `children`: Alert content
+
+**Example:**
+<Alert type="success">Your changes have been saved!</Alert>
+<Alert type="warning">This feature is experimental.</Alert>
+
+### Standard Markdown Elements
+
+All standard Markdown elements are supported and styled:
+
+#### Headings
+
+Headings automatically have proper spacing (no automatic borders):
+
+```mdx
+# Heading 1
+## Heading 2
+### Heading 3
+```
+
+#### Lists
+
+**Unordered Lists:**
+```mdx
+- Item 1
+- Item 2
+  - Nested item (indent with 2 spaces or tab)
+- Item 3
+```
+
+**Ordered Lists:**
+```mdx
+1. First item
+2. Second item
+3. Third item
+```
+
+**Nested Lists:**
+Use indentation (2 spaces or tab) to create nested lists:
+```mdx
+- Main item
+  - Sub-item 1
+  - Sub-item 2
+- Another main item
+```
+
+#### Horizontal Rule
+
+Add manual dividers between sections:
+
+```mdx
+---
+
+Content after divider
+```
+
+#### Code Blocks
+
+Standard Markdown code blocks (with syntax highlighting):
+
+````mdx
+```typescript
+const example = "Code here";
+```
+````
+
+**Note:** All code blocks (both `<CodeBlock>` component and standard Markdown) include a copy button that appears on hover.
+
+#### Links
+
+Standard Markdown links:
+
+```mdx
+[Link Text](https://example.com)
+```
+
+#### Images
+
+Standard Markdown images:
+
+```mdx
+![Alt Text](/path/to/image.png)
+```
+
+### Component Best Practices
+
+1. **Use Callout for important information** - Don't overuse, but highlight key points
+2. **Use CodeBlock for code examples** - Provides syntax highlighting and copy functionality
+3. **Use Snippet for commands** - Simple, one-line commands work best with Snippet
+4. **Use Tabs for alternatives** - Great for showing different installation methods or code examples
+5. **Use Accordion for optional details** - Keep main content visible, hide advanced details
+6. **Use Steps for tutorials** - Perfect for step-by-step guides
+7. **Use Badge for status indicators** - Quick visual indicators for availability, status, etc.
+
+### Component Combinations
+
+You can combine components for richer content:
+
+```mdx
+<Card title="Installation Guide">
+  <Tabs items={['npm', 'yarn', 'pnpm']}>
+    <Tab>
+      <Snippet text="npm install package" dark />
+    </Tab>
+    <Tab>
+      <Snippet text="yarn add package" dark />
+    </Tab>
+    <Tab>
+      <Snippet text="pnpm add package" dark />
+    </Tab>
+  </Tabs>
+  
+  <Callout type="info">
+    After installation, restart your development server.
+  </Callout>
+</Card>
+```
 
 ### Writing Style
 
